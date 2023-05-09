@@ -24,7 +24,12 @@ Route::post('/signup', ['as' => 'signup', 'uses' => 'Auth\LoginController@postSi
 
 Route::middleware(['auth'])->group(function () {
     // route client
-    Route::get('change-account', 'Client\AccountController@index')->name('Change_account');
+    /* route Change Pass */ 
+    Route::get('change-account/{id}', 'Client\AccountController@index')->name('Change_account');
+    Route::post('change-pass/{id}', 'Client\AccountController@changePass')->name('change_pass');
+    Route::post('change-info/{id}', 'Client\AccountController@changeIf')->name('change_if');
+
+
    // Route::get('/check', 'Client\ProductController@check');
     Route::get('/', 'Client\ProductController@home');
     Route::get('san-pham/{id}', 'Client\ProductController@detail')->name('route_Fe_Ctsp');

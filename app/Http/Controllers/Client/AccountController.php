@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
@@ -14,75 +16,41 @@ class AccountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-      $banner = Banner::all();
-      return view('client.account',compact('banner'));
+        $banner = Banner::all();
+        $user = User::find($id);
+        return view('client.account', compact('banner', 'user'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function changeIf($id, Request $request)
     {
-        //
+        $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->number_phone = $request->input('number_phone');
+        $user->address = $request->input('address');
+        $user->save();
+        return redirect()->back()->with('success', "Thay đổi thành công");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function changePass($id, Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $user = User::find($id);
+        if (Hash::check($request->input('password'), $user->password)) 
+        {
+            if($request->pass2 == $request->pass3)
+            {
+                $user->password = Hash::make($request->input('pass3'));
+                $user->save();
+                return redirect()->back()->with('success',"Thay đổi thành công");
+            }
+            else{
+                return redirect()->back()->with('error',"Mật khẩu mới không giống nhau"); 
+            }
+        }
+        else{
+           return redirect()->back()->with('error',"Vui lòng nhập lại mật khẩu");
+        }
+        
     }
 }
