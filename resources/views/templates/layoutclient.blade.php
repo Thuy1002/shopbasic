@@ -23,7 +23,7 @@
     <!-- Slick -->
     <link type="text/css" rel="stylesheet" href="../clientA/css/slick.css" />
     <link type="text/css" rel="stylesheet" href="../clientA/css/slick-theme.css" />
-  
+
     <!-- nouislider -->
     <link type="text/css" rel="stylesheet" href="../clientA/css/nouislider.min.css" />
 
@@ -34,9 +34,9 @@
     <link type="text/css" rel="stylesheet" href="../clientA/css/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.10/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.10/dist/sweetalert2.all.min.js"></script>
- 
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    
+
 </head>
 <style>
     /* Thay đổi màu sắc của chữ */
@@ -179,6 +179,8 @@
                             </li>
                             <li class="user-footer">
                                 <div class="pull-right">
+                                    <a style="font-weight:600;" href="{{ route('Change_account', $objUser->id) }}"
+                                        class="  btn btn-success ">Thông tin cá nhân</a>
                                     <a style="font-weight:600;" href="{{ route('logout') }}"
                                         class="  btn btn-success btn-flat">Sign out</a>
                                 </div>
@@ -298,7 +300,7 @@
             @foreach ($banner as $b)
                 <div class="mySlides fade">
                     <div class="numbertext">1 / 3</div>
-                    <img src="{{ asset('storage/images/'.$b->img) }}" style="height: 465px;width:1476px;">
+                    <img src="{{ asset('storage/images/' . $b->img) }}" style="height: 465px;width:1476px;">
                     <div class="text">{{ $b->title }}</div>
                 </div>
             @endforeach
@@ -476,11 +478,11 @@
         crossorigin="anonymous" />
     <!-- JS của Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwF
-             DMXNAcVivzIaAiCfKpOp" crossorigin="anonymous"></script>
+                 DMXNAcVivzIaAiCfKpOp" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fak
-             FPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                 FPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquV
-             dAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+                 dAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
 
