@@ -7,10 +7,10 @@
     <style>
         body {
             /*-webkit-touch-callout: none;
-                    -webkit-user-select: none;
-                    -moz-user-select: none;
-                    -ms-user-select: none;
-                    -o-user-select: none;*/
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        -o-user-select: none;*/
             user-select: none;
         }
 
@@ -154,7 +154,8 @@
                                             class="fa fa-edit"></i></a>
                                 </td>
                                 <td class="text-center">{{ $l->price }}</td>
-                                <td class="text-center"> <img id="mat_truoc_preview" src="{{ Storage::url($l->img) }}"
+                                <td class="text-center"> <img id="mat_truoc_preview"
+                                        src="{{ asset('storage/app/public/' . $l->img) }}"
                                         style="text-aligh:center ;max-width: 200px; height:100px; margin-bottom: 10px;"
                                         class="img-responsive" /></td>
                                 </td class="text-center">

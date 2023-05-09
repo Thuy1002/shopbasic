@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\DanhmucRequest;
@@ -97,20 +99,22 @@ class DmController extends Controller
             return redirect()->route($method_route_detailDm, ['id' => $id]);
         }
     }
-  
+
     public function destroy($id)
     {
-        $model = categories::find($id);
+        $category = categories::find($id);
+        $category->products()->delete(); // xóa tất cả sản phẩm liên quan đến danh mục này
+        $category->delete(); // xóa danh mục
         return redirect()->back()->with('success', 'Xóa thành công!');
     }
 
-    public function product_dm($id, Request $request)
-    {
-        $dm = new categories();
-        $this->v['dm'] = $dm->categories();
-        $sp = new products();
-        $this->v['extParams'] = $request->all();
-        $this->v['id_dm'] = $sp->loadwithDm($id);
-        return view('admin.danhmuc.dmsp', $this->v);
-    }
+    // public function product_dm($id, Request $request)
+    // {
+    //     $dm = new categories();
+    //     $this->v['dm'] = $dm->categories();
+    //     $sp = new products();
+    //     $this->v['extParams'] = $request->all();
+    //     $this->v['id_dm'] = $sp->loadwithDm($id);
+    //     return view('admin.danhmuc.dmsp', $this->v);
+    // }
 }
