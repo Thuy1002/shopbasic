@@ -47,7 +47,7 @@
 										<div class="product">
 											<div class="product-img">
 												{{-- <img src="../clientA/img/product01.png" alt=""> --}}
-												<img src="{{Storage::url($l->img)}}" alt="">
+												<img src="{{ asset('storage/images/'.$l->img) }}" alt="">
 												<div class="product-label">
 													<span class="sale">-30%</span>
 													<span class="new">{{$l->status == 0?'Hết hàng': 'New'}}</span>

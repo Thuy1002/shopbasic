@@ -100,7 +100,7 @@
                         <div class="row">
                             <div class="col-xs-6">
                                 <img id="mat_truoc_preview"
-                                    src="{{ $objitem_sp->img ? '' . Storage::url($objitem_sp->img) : 'http://placehold.it/100x100' }}"
+                                    src="{{ $objitem_sp->img ? '' . asset('storage/images/'.$objitem_sp->img) : 'http://placehold.it/100x100' }}"
                                     alt="your image" style="max-width: 200px; height:100px; margin-bottom: 10px;"
                                     class="img-fluid" />
                                 <label for="cmt_truoc">Mặt trước</label><br />
@@ -139,10 +139,10 @@
                 <div class="form-group">
                     <label for="">Tên danh mục</label>
 
-                    <select name="id_categories" id="" class="form-control" required="required">
-                        <option value=" {{-- {{DB::table('danh_muc')->where('id','=',$objitem_sp->id_categories)->first()->title}} --}}">Chọn</option>
+                    <select name="categories_id" id="" class="form-control" required="required">
+                        <option value=" {{-- {{DB::table('danh_muc')->where('id','=',$objitem_sp->categories_id)->first()->title}} --}}">Chọn</option>
                         @foreach ($dm as $d)
-                            <option {{ $d->id == $objitem_sp->id_categories ? 'selected' : '' }} value="{{ $d->id }}">
+                            <option {{ $d->id == $objitem_sp->categories_id ? 'selected' : '' }} value="{{ $d->id }}">
                                 {{ $d->title }}</option>
                         @endforeach
                     </select>

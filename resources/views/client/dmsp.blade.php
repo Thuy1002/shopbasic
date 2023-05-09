@@ -193,7 +193,7 @@
                             <div class="col-md-4 col-xs-6">
                                 <div class="product">
                                     <div class="product-img">
-                                        <img src="{{ Storage::url($s->img) }}" alt="">
+                                        <img src="{{ asset('storage/images/'.$s->img) }}" alt="">
                                         <div class="product-label">
                                             <span class="sale">-30%</span>
                                             <span class="new">{{ $s->status == 0 ? 'Hết hàng' : 'New' }}</span>
@@ -201,7 +201,7 @@
                                         </div>
                                     </div>
                                     <div class="product-body">
-                                        {{-- <p class="product-category">{{DB::table('danh_muc')->where('id',$s->id_categories)->first()->title}}</p> --}}
+                                        {{-- <p class="product-category">{{DB::table('danh_muc')->where('id',$s->categories_id)->first()->title}}</p> --}}
                                         <h3 class="product-name"><a href="#">{{ $s->title }}</a></h3>
                                         <h4 class="product-price">${{ $s->price }} <del
                                                 class="product-old-price">$990.00</del></h4>

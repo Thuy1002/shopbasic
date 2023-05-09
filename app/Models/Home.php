@@ -25,7 +25,7 @@ class Home extends Model
         return $obj;
     }
     public function loadwithDm($id){
-      $res = DB::table($this->table)->where('id_categories',$id)->where('status','!=',2);
+      $res = DB::table($this->table)->where('categories_id',$id)->where('status','!=',2);
       $list = $res->paginate(6);
       return $list;
     }

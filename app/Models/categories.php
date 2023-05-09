@@ -69,7 +69,7 @@ class categories extends Model
   public function Xoa($id)
   {
     $res = DB::table($this->table)->where('id', $id)->update(['status' => 0]);
-    DB::table('products')->where('id_categories', $id)->update(['status' => 2]);
+    DB::table('products')->where('categories_id', $id)->update(['status' => 2]);
     return $res;
   }
   

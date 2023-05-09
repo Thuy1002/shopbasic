@@ -154,11 +154,7 @@
                                             class="fa fa-edit"></i></a>
                                 </td>
                                 <td class="text-center">{{ $l->price }}</td>
-                                <td class="text-center"> <img id="mat_truoc_preview"
-                                        src="{{ asset('storage/app/public/' . $l->img) }}"
-                                        style="text-aligh:center ;max-width: 200px; height:100px; margin-bottom: 10px;"
-                                        class="img-responsive" /></td>
-                                </td class="text-center">
+                                <td class="text-center"> <img style="width:40%;" src="{{ asset('storage/images/'.$l->img) }}" alt=""></td>
                                 <td class="text-center">{{ $l->describe }}</td>
                                 <td class="text-center">{{ $l->quantity }}</td>
                                 <td class="text-center">

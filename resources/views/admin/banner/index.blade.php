@@ -168,7 +168,7 @@
                                         style="white-space:unset;text-align: justify;"> {{ $l->title }} <i
                                             class="fa fa-edit"></i></a>
                                 </td>
-                                <td class="text-center"> <img id="mat_truoc_preview" src="{{ Storage::url($l->img) }}"
+                                <td class="text-center"> <img id="mat_truoc_preview" src="{{ asset('storage/images/'.$l->img) }}"
                                         style="margin:auto ;max-width: 200px; height:100px; margin-bottom: 10px;"
                                         class="img-responsive" /></td>
                                 <td class="text-center"><a onclick="return confirm('Có muốn xóa không?')" class="btn btn-danger" 

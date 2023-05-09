@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
       // $sanpham[$i] = [
       //   'title' => "Iphone 1" . $i,
       //   'price' => 20000,
-      //   'id_categories' => 1,
+      //   'categories_id' => 1,
       //   'quantity' => 2,
       //   'img' => "product1.jpg",
       //   'mo_ta' => "xịn ",

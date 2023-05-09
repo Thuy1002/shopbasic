@@ -70,7 +70,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/banner/delete/{id}', 'Admin\BannerContrller@destroy')->name('route_BackEnd_Banner_del');
 
         Route::get('sanpham', 'Admin\spController@index')->name('route_BackEnd_Sanpham_Index');
-        Route::match(['get', 'post'], 'sanpham/add', 'Admin\spController@add')->name('route_BackEnd_Sanpham_Add');
+        Route::get('sanpham/add', 'Admin\spController@add')->name('route_BackEnd_Sanpham_Add');
+        Route::post('sanpham/store', 'Admin\spController@store')->name('route_BackEnd_Sanpham_Store');
         Route::get('sanpham/detail/{id}', 'Admin\spController@detailSp')->name('route_BackEnd_Sanpham_detail');
         Route::post('sanpham/update/{id}', 'Admin\spController@updateSp')->name('route_BackEnd_Sanpham_update');
         Route::get('sanpham/delete/{id}', 'Admin\spController@destroy')->name('route_BackEnd_Sanpham_del');

@@ -35,7 +35,7 @@ class SanphamRequest extends FormRequest
                             'price' => "required ",
                             'quantity' => "required ",
                             // 'img' => "required   ",
-                            'id_categories' => "required ",
+                            'categories_id' => "required ",
                         ];
                         break;
               
@@ -45,7 +45,7 @@ class SanphamRequest extends FormRequest
                             'price' => "required ",
                             'quantity' => "required ",
                             // 'img' => "required   ",
-                            'id_categories' => "required ",
+                            'categories_id' => "required ",
                         ];
                         break;
                         # code...
@@ -72,7 +72,7 @@ class SanphamRequest extends FormRequest
             // 'quantity.min'=>"số lượng lớn hơn 1",
             // 'img.required'=>"chưa có ảnh",
             // 'img.file'=>"phải là file ảnh được tải lên",
-            'id_categories.required' => "Chưa chọn danh mục",
+            'categories_id.required' => "Chưa chọn danh mục",
 
         ];
     }

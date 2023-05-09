@@ -29,7 +29,7 @@ use Illuminate\Support\Facades\DB;
                     <td>{{ $item->products->id }}</td>
                     <td>{{ $item->products->title }}</td>
                     <td>
-                        <img style="width:10%;" class="img-fluid" src="{{ Storage::url($item->products->img) }}" alt="Ảnh sản phẩm">
+                        <img style="width:10%;" class="img-fluid" src="{{asset('storage/images/'.$item->products->img) }}" alt="Ảnh sản phẩm">
                     </td>
                     <td>{{ number_format($item->products->price) }} VNĐ</td>
                     <td>

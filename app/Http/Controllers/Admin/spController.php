@@ -21,8 +21,11 @@ class spController extends Controller
     public function index(Request $request)
     {
         $this->v['extParams'] = $request->all();
-        $products = products::join('categories', 'products.id_categories', '=', 'categories.id')
+        $products = products::join('categories', 'products.categories_id', '=', 'categories.id')
             ->select('products.*', 'categories.title as category_name')
+             // Đồng thời, đặt tên mới cho cột title của bảng categories thành category_name, 
+             //để có thể truy cập thông tin danh mục của sản phẩm thông qua thuộc tính category_name
+             // của đối tượng sản phẩm.
             ->paginate(5);
         return view('admin.sanpham.index', $this->v, compact('products'));
     }
@@ -30,50 +33,30 @@ class spController extends Controller
 
     public function add(SanphamRequest $request)
     {
-        $this->v['_title'] = "them nguoi dung";
-        $method_route = 'route_BackEnd_Sanpham_Add';
-        $method_route_index = 'route_BackEnd_Sanpham_Index';
+        $this->v['_title'] = "Thêm sản phẩm";
         $dm = new categories();
         $this->v['tieude'] = "thêm sản phẩm";
-        // dd($dm->categories());
         $this->v['dm'] = $dm->categories();
-
-        if ($request->isMethod('post')) { // check nếu là post chạy cậu lệnh dưới
-            $params = [];
-            $params['cols'] = array_map(
-                function ($item) { //array_map chạy lần lượt qua các phần tử của mảng
-                    if ($item == '')
-                        $item = null;
-
-                    if (is_string($item))
-                        $item = trim($item); //bỏ khoảng chống
-
-                    return $item;
-                },
-                $request->post()
-            );
-            unset($params['cols']['_token']);
-            // dd($params['cols']);
-            if ($request->hasFile('cmt_mat_truoc') && $request->file('cmt_mat_truoc')->isValid()) {
-                $params['cols']['img'] = $this->uploadFile($request->file('cmt_mat_truoc'));
-            };
-            // $src =  $request->file('img')->store('public/images');//store lưu chữ các file ảnh
-            // $src = str_replace('public/images/', "", $src);
-            $modelTest = new products();
-            $res = $modelTest->saveNew($params);
-            if ($res == null) {
-                # code...
-                redirect()->route($method_route);
-            } elseif ($res > 0) {
-                Session::flash('success', 'Thêm sản phẩm thành công');
-                return redirect()->route($method_route_index);
-            } else {
-                Session::flash('arro', 'Lỗi thêm mới');
-                redirect()->route($method_route);
-            }
-            // dd($params['cols']);
-        }
         return view('admin.sanpham.add', $this->v);
+    }
+    public function store(SanphamRequest $request)
+    {
+        $product = new products();
+        $product->title = $request->input('title');
+        $product->price = $request->input('price');
+        $product->describe = $request->input('describe');
+        $product->categories_id = $request->input('categories_id');
+        $product->quantity = $request->input('quantity');
+        $product->status = $request->input('status');
+        if ($request->hasFile('img')) {
+            $image = $request->file('img');
+            $fileName = time() . '_' . $image->getClientOriginalName();
+            $path = $image->storeAs('public/images', $fileName);
+            $product->img = $fileName;
+        }
+        $product->save();
+       // dd($product);
+        return redirect()->route('route_BackEnd_Sanpham_Index')->with('success',"Thêm sản phẩm thành công");
     }
 
     public function detailSp($id, Request $request)

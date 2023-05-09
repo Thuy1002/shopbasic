@@ -298,7 +298,7 @@
             @foreach ($banner as $b)
                 <div class="mySlides fade">
                     <div class="numbertext">1 / 3</div>
-                    <img src="{{ Storage::url($b->img) }}" style="height: 465px;width:1476px;">
+                    <img src="{{ asset('storage/images/'.$b->img) }}" style="height: 465px;width:1476px;">
                     <div class="text">{{ $b->title }}</div>
                 </div>
             @endforeach

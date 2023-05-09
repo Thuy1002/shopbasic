@@ -39,43 +39,22 @@
             }
         </style>
 
-        <?php //Hiển thị thông báo thành công
-        ?>
-        @if (Session::has('success'))
-            <div class="alert alert-success alert-dismissible" role="alert">
-                <strong>{{ Session::get('success') }}</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    <span class="sr-only">Close</span>
-                </button>
-            </div>
-        @endif
-        <?php //Hiển thị thông báo lỗi
-        ?>
-        @if (Session::has('error'))
-            <div class="alert alert-danger alert-dismissible" role="alert">
-                <strong>{{ Session::get('error') }}</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    <span class="sr-only">Close</span>
-                </button>
-            </div>
-        @endif
-        @if ($errors->any())
-            <div class="alert alert-danger alert-dismissible" role="alert">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    <span class="sr-only">Close</span>
-                </button>
-            </div>
-        @endif
+        <div id="msg-box">
+            <?php //Hiển thị thông báo thành công
+            ?>
+            @if (session('success'))
+                <script>
+                    swal({
+                        title: "OK!",
+                        text: "Xóa thành công",
+                        icon: "success",
+                    });
+                </script>
+            @endif
+        </div>
 
-        <form class="form-horizontal " action="" method="POST" role="form" enctype="multipart/form-data">
+        <form class="form-horizontal " action="{{ route('route_BackEnd_Sanpham_Store') }}" method="POST" role="form"
+            enctype="multipart/form-data">
             @csrf
             <div style="padding-right: 130px;" class="col-md-9">
                 <div class="form-group">
@@ -95,9 +74,9 @@
                                     src="https://dbk.vn/uploads/ckfinder/images/tin-tuc-1/anh-ma-kinh-di-1.jpg"
                                     alt="your image" style="max-width: 200px; height:100px; margin-bottom: 10px;"
                                     class="img-fluid" />
-                                <input type="file" name="cmt_mat_truoc" accept="image/*"
-                                    class="form-control-file @error('cmt_mat_truoc') is-invalid @enderror" id="cmt_truoc">
-                                <label for="cmt_truoc">Mặt trước</label><br />
+                                <input type="file" name="img" accept="image/*"
+                                    class="form-control-file @error('img') is-invalid @enderror" id="img">
+                                <label for="img">Mặt trước</label><br />
                             </div>
                         </div>
                     </div>
@@ -112,7 +91,7 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="">Tên danh mục</label>
-                    <select name="id_categories" id="" class="form-control" required="required">
+                    <select name="categories_id" id="" class="form-control" required="required">
                         <option value="">ABC</option>
                         @foreach ($dm as $d)
                             <option value="{{ $d->id }}">{{ $d->title }}</option>
@@ -174,7 +153,7 @@
                     reader.readAsDataURL(input.files[0]);
                 }
             }
-            $("#cmt_truoc").change(function() {
+            $("#img").change(function() {
                 readURL(this, '#mat_truoc_preview');
             });
 

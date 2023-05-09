@@ -146,7 +146,7 @@
                                 </td>
                                 <td class="text-center">{{ $l->email }}</td>
                                 {{-- <td class="text-center">  <img id="mat_truoc_preview"
-                                    src="{{Storage::url($l->img)}}"
+                                    src="{{ asset('storage/images/'.$l->img) }}"
                                  
                                     style="text-aligh:center ;max-width: 200px; height:100px; margin-bottom: 10px;" class="img-responsive"/></td> --}}
                                 <td class="text-center">

@@ -97,7 +97,7 @@
                                 <div class="row">
                                     <div class="col-xs-6">
                                         <img id="mat_truoc_preview"
-                                             src="{{ $objitem->img?''.Storage::url($objitem->img):'http://placehold.it/100x100' }}"
+                                             src="{{ $objitem->img?''.asset('storage/images/'.$objitem->img):'http://placehold.it/100x100' }}"
                                              alt="your image"
                                              style="max-width: 200px; height:100px; margin-bottom: 10px;" class="img-responsive"/>
                                         <label for="cmt_truoc">Mặt trước</label><br/>

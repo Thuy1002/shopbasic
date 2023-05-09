@@ -81,21 +81,21 @@
                 <div class="col-md-5 col-md-push-2">
                     <div id="product-main-img">
                         <div class="product-preview">
-                            <img src="{{ Storage::url($objitem->img) }}" alt="">
+                            <img src="{{ asset('storage/images/' . $objitem->img) }}" alt="">
                         </div>
 
                         <div class="product-preview">
-                            <img src="{{ Storage::url($objitem->img) }}" alt="">
-                        </div>
-
-
-                        <div class="product-preview">
-                            <img src="{{ Storage::url($objitem->img) }}" alt="">
+                            <img src="{{ asset('storage/images/' . $objitem->img) }}" alt="">
                         </div>
 
 
                         <div class="product-preview">
-                            <img src="{{ Storage::url($objitem->img) }}" alt="">
+                            <img src="{{ asset('storage/images/' . $objitem->img) }}" alt="">
+                        </div>
+
+
+                        <div class="product-preview">
+                            <img src="{{ asset('storage/images/' . $objitem->img) }}" alt="">
                         </div>
 
                     </div>
@@ -106,19 +106,19 @@
                 <div class="col-md-2  col-md-pull-5">
                     <div id="product-imgs">
                         <div class="product-preview">
-                            <img src="{{ Storage::url($objitem->img) }}" alt="">
+                            <img src="{{ asset('storage/images/' . $objitem->img) }}" alt="">
                         </div>
 
                         <div class="product-preview">
-                            <img src="{{ $objitem->img }}" alt="">
+                            <img src="{{ asset('storage/images/' . $objitem->img) }}" alt="">
                         </div>
 
                         <div class="product-preview">
-                            <img src="{{ Storage::url($objitem->img) }}" alt="">
+                            <img src="{{ asset('storage/images/' . $objitem->img) }}" alt="">
                         </div>
 
                         <div class="product-preview">
-                            <img src="{{ Storage::url($objitem->img) }}" alt="">
+                            <img src="{{ asset('storage/images/' . $objitem->img) }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -181,7 +181,7 @@
 
                         <ul class="product-links">
                             <li>Hãng:</li>
-                            {{-- <li><a href="">{{DB::table('danh_muc')->where('id',$objitem->id_categories)->first()->title}}</a></li> --}}
+                            {{-- <li><a href="">{{DB::table('danh_muc')->where('id',$objitem->categories_id)->first()->title}}</a></li> --}}
 
                         </ul>
 
@@ -219,7 +219,7 @@
                                                     <li>
                                                         <div class="review-heading">
                                                             <h5 class="name">{{ $com->user->name }}</h5>
-                                                            <p class="date">{{$com->created_at }}</p>
+                                                            <p class="date">{{ $com->created_at }}</p>
                                                         </div>
 
                                                         <div class="review-body">
@@ -227,8 +227,10 @@
                                                                 {{ $com->content }}</p>
                                                             @if (auth()->user()->id == $com->user_id)
                                                                 <div class="actions">
-                                                                    <button  class="btn btn-edit">Sửa</button>
-                                                                   <a href="{{route('delete',$com->id)}}" onclick="return confirm('Có muốn xóa không?')" class="btn btn-delete">Xóa</a>
+                                                                    <button class="btn btn-edit">Sửa</button>
+                                                                    <a href="{{ route('delete', $com->id) }}"
+                                                                        onclick="return confirm('Có muốn xóa không?')"
+                                                                        class="btn btn-delete">Xóa</a>
                                                                 </div>
                                                             @endif
                                                         </div>
