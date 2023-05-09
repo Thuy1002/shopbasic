@@ -1,5 +1,6 @@
 @php
-use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Facades\Storage; 
 @endphp
 
 @extends('templates.layoutadmin')
@@ -79,7 +80,9 @@ use Illuminate\Support\Facades\DB;
             </div>
         @endif
 
-        <form class="form-horizontal " action="{{ route('route_BackEnd_Sanpham_update', ['id' => request()->route('id')]) }}" method="POST" role="form" enctype="multipart/form-data">
+        <form class="form-horizontal "
+            action="{{ route('route_BackEnd_Sanpham_update', ['id' => request()->route('id')]) }}" method="POST"
+            role="form" enctype="multipart/form-data">
             @csrf
             <div style="padding-right: 130px;" class="col-md-9">
                 <div class="form-group">
@@ -90,19 +93,19 @@ use Illuminate\Support\Facades\DB;
                     <span id="mes_sdt"></span>
 
                 </div>
-            
+
                 <div class="form-group">
                     <label class="">Ảnh</label>
                     <div class="">
                         <div class="row">
                             <div class="col-xs-6">
                                 <img id="mat_truoc_preview"
-                                src="{{ $objitem_sp->img?''.Storage::url($objitem_sp->img):'http://placehold.it/100x100' }}"
+                                    src="{{ $objitem_sp->img ? '' . Storage::url($objitem_sp->img) : 'http://placehold.it/100x100' }}"
                                     alt="your image" style="max-width: 200px; height:100px; margin-bottom: 10px;"
                                     class="img-fluid" />
                                 <label for="cmt_truoc">Mặt trước</label><br />
-                                <input   class="form-control-file @error('cmt_mat_truoc') is-invalid @enderror"
-                                id="cmt_truoc" type="file" name="img" class="form-group">
+                                <input class="form-control-file @error('cmt_mat_truoc') is-invalid @enderror" id="cmt_truoc"
+                                    type="file" name="img" class="form-group">
                             </div>
                         </div>
                     </div>
@@ -137,9 +140,10 @@ use Illuminate\Support\Facades\DB;
                     <label for="">Tên danh mục</label>
 
                     <select name="id_categories" id="" class="form-control" required="required">
-                        <option value=" {{-- {{DB::table('danh_muc')->where('id','=',$objitem_sp->id_categories)->first()->title}} --}}">Chọn</option> 
+                        <option value=" {{-- {{DB::table('danh_muc')->where('id','=',$objitem_sp->id_categories)->first()->title}} --}}">Chọn</option>
                         @foreach ($dm as $d)
-                            <option {{ $d->id == $objitem_sp->id_categories?'selected':''}}  value="{{ $d->id }}">{{ $d->title }}</option>
+                            <option {{ $d->id == $objitem_sp->id_categories ? 'selected' : '' }} value="{{ $d->id }}">
+                                {{ $d->title }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -153,7 +157,8 @@ use Illuminate\Support\Facades\DB;
                 <div class="form-group">
                     <label for="">Giá</label>
                     {{-- <input type="text" class="form-control" name="price" id="" placeholder=""> --}}
-                    <input type="number" name="price" id="" class="form-control" value="{{ $objitem_sp->price }}">
+                    <input type="number" name="price" id="" class="form-control"
+                        value="{{ $objitem_sp->price }}">
                     <span id="mes_sdt"></span>
                 </div>
                 {{-- <div class="form-group">
@@ -164,13 +169,14 @@ use Illuminate\Support\Facades\DB;
                     <label for="">Trạng thái</label>
                     <div class="radio">
                         <label for="">
-                            <input  {{ 1 == $objitem_sp->status?'checked':''}}   type="radio" name="status" id="input" value="1"
-                                > Còn Hàng
+                            <input {{ 1 == $objitem_sp->status ? 'checked' : '' }} type="radio" name="status"
+                                id="input" value="1"> Còn Hàng
                         </label>
                     </div>
                     <div class="radio">
                         <label for="">
-                            <input type="radio"   {{ 0 == $objitem_sp->status?'checked':''}}   name="status" id="" value="0">
+                            <input type="radio" {{ 0 == $objitem_sp->status ? 'checked' : '' }} name="status"
+                                id="" value="0">
                             Hết hàng
                         </label>
                     </div>
@@ -178,7 +184,7 @@ use Illuminate\Support\Facades\DB;
                 </div>
 
 
-                <button type="submit" class="btn btn-primary">Tạo Mới</button>
+                <button type="submit" class="btn btn-primary">Sửa</button>
             </div>
 
     </section>

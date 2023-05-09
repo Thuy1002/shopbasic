@@ -4,10 +4,10 @@
     <style>
         body {
             /*-webkit-touch-callout: none;
-                            -webkit-user-select: none;
-                            -moz-user-select: none;
-                            -ms-user-select: none;
-                            -o-user-select: none;*/
+                                -webkit-user-select: none;
+                                -moz-user-select: none;
+                                -ms-user-select: none;
+                                -o-user-select: none;*/
             user-select: none;
         }
 
@@ -100,38 +100,14 @@
         <div id="msg-box">
             <?php //Hiển thị thông báo thành công
             ?>
-            @if (Session::has('success'))
-                <div class="alert alert-success alert-dismissible" role="alert">
-                    <strong>{{ Session::get('success') }}</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">Close</span>
-                    </button>
-                </div>
-            @endif
-            <?php //Hiển thị thông báo lỗi
-            ?>
-            @if (Session::has('error'))
-                <div class="alert alert-danger alert-dismissible" role="alert">
-                    <strong>{{ Session::get('error') }}</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">Close</span>
-                    </button>
-                </div>
-            @endif
-            @if ($errors->any())
-                <div class="alert alert-danger alert-dismissible" role="alert">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">Close</span>
-                    </button>
-                </div>
+            @if (session('success'))
+                <script>
+                    swal({
+                        title: "OK!",
+                        text: "Xóa thành công",
+                        icon: "success",
+                    });
+                </script>
             @endif
         </div>
         @if (count($discount) <= 0)
@@ -180,8 +156,7 @@
                                 </td>
                                 <td class="text-center"><a onclick="return confirm('Có muốn xóa không ?')"
                                         class="btn btn-danger" href="{{ route('admin_discount_del', [$l->id]) }}">Xóa</a>
-                                    <a class="btn btn-primary"
-                                        href="{{ route('admin_edit_discount', [$l->id]) }}">Sửa</a>
+                                    <a class="btn btn-primary" href="{{ route('admin_edit_discount', [$l->id]) }}">Sửa</a>
                                 </td>
                             </tr>
                         @endforeach

@@ -33,8 +33,9 @@ use Illuminate\Support\Facades\DB;
                     </td>
                     <td>{{ number_format($item->products->price) }} VNĐ</td>
                     <td>
-                        <button type="button" onclick="location.href='{{ route('cart_delete', $item->id) }}'"
-                            class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Xóa</button>
+                        <a href="{{ route('cart_delete', $item->id) }}" onclick="return confirm('Có muốn xóa không?')"
+                            class="btn btn-sm btn-danger"><i class="fa fa-trash"></i>Xóa    </a>
+                            </a>
                     </td>
                 </tr>
                 @endforeach

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\UserRequest;
+use App\Models\User;
 use App\Models\users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -110,22 +111,8 @@ class UsersController extends Controller
     }
     public function destroy($id)
     {
-        $method_router_index = "route_BackEnd_Uesr_Index";
-        $model = new users();
-        $res = $model->Xoa($id);
-
-        if ($res == null) {
-            # code...
-            return  redirect()->route($method_router_index);
-        } elseif ($res > 0) {
-            Session::flash('success', 'Xóa người dùng '.$id.'thành công');
-
-            return   redirect()->route($method_router_index);
-        } else {
-            Session::flash('erro', 'Xóa lỗi');
-            redirect()->route($method_router_index);
-        }
-        return redirect()->route($method_router_index);
+        $user = User::find($id);
+        return redirect()->back()->with('success', 'Xóa thành công!');
     }
 
     // public function uploadFile($file){

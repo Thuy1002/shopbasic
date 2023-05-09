@@ -219,7 +219,7 @@
                                                     <li>
                                                         <div class="review-heading">
                                                             <h5 class="name">{{ $com->user->name }}</h5>
-                                                            <p class="date">27 DEC 2018, 8:0 PM</p>
+                                                            <p class="date">{{$com->created_at }}</p>
                                                         </div>
 
                                                         <div class="review-body">
@@ -227,8 +227,8 @@
                                                                 {{ $com->content }}</p>
                                                             @if (auth()->user()->id == $com->user_id)
                                                                 <div class="actions">
-                                                                    <button  class="btn-edit">Sửa</button>
-                                                                    <button onclick="location.href='{{route('delete',$com->id)}}'" class="btn-delete">Xóa</button>
+                                                                    <button  class="btn btn-edit">Sửa</button>
+                                                                   <a href="{{route('delete',$com->id)}}" onclick="return confirm('Có muốn xóa không?')" class="btn btn-delete">Xóa</a>
                                                                 </div>
                                                             @endif
                                                         </div>

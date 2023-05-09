@@ -100,22 +100,8 @@ class DmController extends Controller
   
     public function destroy($id)
     {
-        $method_route_dm = 'route_BackEnd_Danhmuc_Index';
-        $model = new categories();
-        $res = $model->Xoa($id);
-
-        if ($res == null) {
-            # code...
-            redirect()->route($method_route_dm);
-        } elseif ($res > 0) {
-            Session::flash('success', 'Xóa thành công danh mục');
-
-            return   redirect()->route($method_route_dm);
-        } else {
-            Session::flash('arro', 'Xóa lỗi');
-            redirect()->route($method_route_dm);
-        }
-        return redirect()->route($method_route_dm);
+        $model = categories::find($id);
+        return redirect()->back()->with('success', 'Xóa thành công!');
     }
 
     public function product_dm($id, Request $request)

@@ -1,14 +1,13 @@
-
 @extends('templates.layoutadmin')
 @section('title', 'danh muc')
 @section('css')
     <style>
         body {
             /*-webkit-touch-callout: none;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                -o-user-select: none;*/
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    -o-user-select: none;*/
             user-select: none;
         }
 
@@ -84,8 +83,8 @@
                             </button>
                             <a href="{{ url('/user') }}" class="btn btn-default btn-sm "><i class="fa fa-remove"></i>
                                 Clear </a>
-                            <a href="{{route('route_BackEnd_Danhmuc_Add')}}" class="btn btn-info btn-sm"><i class="fa fa-user-plus"
-                                    style="color:white;"></i>
+                            <a href="{{ route('route_BackEnd_Danhmuc_Add') }}" class="btn btn-info btn-sm"><i
+                                    class="fa fa-user-plus" style="color:white;"></i>
                                 Add new</a>
                         </div>
                     </div>
@@ -101,38 +100,14 @@
         <div id="msg-box">
             <?php //Hiển thị thông báo thành công
             ?>
-            @if (Session::has('success'))
-                <div class="alert alert-success alert-dismissible" role="alert">
-                    <strong>{{ Session::get('success') }}</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">Close</span>
-                    </button>
-                </div>
-            @endif
-            <?php //Hiển thị thông báo lỗi
-            ?>
-            @if (Session::has('error'))
-                <div class="alert alert-danger alert-dismissible" role="alert">
-                    <strong>{{ Session::get('error') }}</strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">Close</span>
-                    </button>
-                </div>
-            @endif
-            @if ($errors->any())
-                <div class="alert alert-danger alert-dismissible" role="alert">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        <span class="sr-only">Close</span>
-                    </button>
-                </div>
+            @if (session('success'))
+                <script>
+                    swal({
+                        title: "OK!",
+                        text: "Xóa thành công",
+                        icon: "success",
+                    });
+                </script>
             @endif
         </div>
         @if (count($listdm) <= 0)
@@ -143,8 +118,8 @@
         <div class="box-body table-responsive no-padding">
             <form action="" method="post">
                 @csrf
-                <span class="pull-right">Tổng số bản ghi tìm thấy: <span
-                     style="font-size: 15px;font-weight: bold;">   {{count($listdm)}}</span></span>
+                <span class="pull-right">Tổng số bản ghi tìm thấy: <span style="font-size: 15px;font-weight: bold;">
+                        {{ count($listdm) }}</span></span>
                 <div class="clearfix"></div>
                 <div class="double-scroll">
                     <table class="table table-bordered">
@@ -152,19 +127,24 @@
                             <th style="width: 50px" class="text-center">
                                 #ID
                             </th>
-                            <th class="text-center">Tên danh  mục</th>
-              
+                            <th class="text-center">Tên danh mục</th>
+
 
                         </tr>
                         @foreach ($listdm as $l)
                             <tr>
                                 {{-- <td><input type="checkbox" name="chk_hv[]" class="chk_hv" id="chk_hv_{{$item->id}}" value="{{$item->id}}"> </td> --}}
-                                <td class="text-center">{{$l ->id}}</td>
+                                <td class="text-center">{{ $l->id }}</td>
                                 <td class="text-center"><a style="color:#333333;font-weight: bold;" href=""
-                                        style="white-space:unset;text-align: justify;"> {{$l ->title}} <i class="fa fa-edit"></i></a>
+                                        style="white-space:unset;text-align: justify;"> {{ $l->title }} <i
+                                            class="fa fa-edit"></i></a>
                                 </td>
-                                <td class="text-center"><a onclick="return confirm('Hãy cẩn thận với xuy nghĩ của bạn !!')" class="btn btn-danger"  href="{{ route('route_BackEnd_Danhmuc_del',[$l->id]) }}">Xóa</a>
-                                    <a class="btn btn-primary" href="{{ route('route_BackEnd_Danhmuc_detail',[$l->id]) }}" >Sửa</a></td>
+                                <td class="text-center"><a onclick="return confirm('Bạn có muốn xóa không?')"
+                                        class="btn btn-danger"
+                                        href="{{ route('route_BackEnd_Danhmuc_del', [$l->id]) }}">Xóa</a>
+                                    <a class="btn btn-primary"
+                                        href="{{ route('route_BackEnd_Danhmuc_detail', [$l->id]) }}">Sửa</a>
+                                </td>
                             </tr>
                         @endforeach
 
@@ -174,8 +154,8 @@
         </div>
         <br>
         <div class="text-center">
-            {{$listdm->appends($extParams)->links()}}
-          
+            {{ $listdm->appends($extParams)->links() }}
+
         </div>
         <index-cs ref="index_cs"></index-cs>
     </section>

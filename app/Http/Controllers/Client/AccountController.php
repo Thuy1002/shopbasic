@@ -1,8 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Client;
 
+use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AccountController extends Controller
 {
@@ -13,7 +16,8 @@ class AccountController extends Controller
      */
     public function index()
     {
-        //
+      $banner = Banner::all();
+      return view('client.account',compact('banner'));
     }
 
     /**

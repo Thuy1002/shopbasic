@@ -96,7 +96,7 @@ class DiscountController extends Controller
     {
         $discount = Discount::find($id);
         $discount->delete();
-        return redirect()->route('admin_discount')
+        return redirect()->back()
             ->with('success', 'Xóa thành công ');
     }
     public function checkDiscount(Request $request)

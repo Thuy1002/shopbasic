@@ -1,3 +1,4 @@
+@include('sweetalert::alert')
 @php
     $objUser = \Illuminate\Support\Facades\Auth::user();
 @endphp
@@ -33,7 +34,9 @@
     <link type="text/css" rel="stylesheet" href="../clientA/css/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.10/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.10/dist/sweetalert2.all.min.js"></script>
-
+ 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
 </head>
 <style>
     /* Thay đổi màu sắc của chữ */

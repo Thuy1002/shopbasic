@@ -1,3 +1,5 @@
+@include('sweetalert::alert')
+
 @php
     $objUser = \Illuminate\Support\Facades\Auth::user();
 @endphp
@@ -33,7 +35,7 @@
     <link rel="stylesheet" href="{{ asset('default/dist/css/spx.css') }}">
     <link rel="stylesheet" href="{{ asset('css/SpxApp.css') }}?b={{ config('app.build_version') }}">
     <link rel="stylesheet" href="{{ asset('css/backend.css') }}?b={{ config('app.build_version') }}">
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 
