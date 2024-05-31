@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Client\HomeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
- 
-Route::get('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@getLogin']);
-Route::post('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@postLogin']);
-Route::get('/logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@getlogout']);
-Route::get('/signup', ['as' => 'signup', 'uses' => 'Auth\LoginController@getSignup']);
-Route::post('/signup', ['as' => 'signup', 'uses' => 'Auth\LoginController@postSignup']);
+Route::prefix('/')->name('auth.')->controller(LoginController::class)->group(function () {
+    Route::get('login', 'index')->name('login');
+    Route::get('logout', 'logout')->name('logout');
+    Route::post('handel', 'handleLogin')->name('handleLogin');
+    Route::match(['get', 'post'], 'singup', 'singup')->name('singup');
+});

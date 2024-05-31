@@ -201,9 +201,9 @@ License: You must have a valid license purchased only from themeforest(the above
                     <i class="symbol-badge bg-success"></i>
                 </div>
                 <div class="d-flex flex-column">
-                    <a href="{{ route('admin.account.about') }}"
+                    <a href=""
                         class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{ $user->name }}</a>
-                    <div class="text-muted mt-1">Giới tính: {{ $user->gender }}</div>
+                    <div class="text-muted mt-1">Giới tính:Nam</div>
                     <div class="navi mt-2">
                         <a href="#" class="navi-item">
                             <span class="navi-link p-0 pb-2">

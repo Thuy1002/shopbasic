@@ -1,4 +1,4 @@
-<header class="header">
+
     <div class="header__top">
         <div class="container">
             <div class="row">
@@ -74,4 +74,3 @@
             <i class="fa fa-bars"></i>
         </div>
     </div>
-</header>

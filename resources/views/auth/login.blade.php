@@ -1,173 +1,148 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="{{ asset('default/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('default/bower_components/font-awesome/css/font-awesome.min.css')}}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="{{ asset('default/bower_components/Ionicons/css/ionicons.min.css')}}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('default/dist/css/AdminLTE.min.css')}}">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="{{ asset('default/plugins/iCheck/square/blue.css')}}">
-    <link rel="stylesheet" href="{{ asset('default/dist/css/spx.css')}}">
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Google Font -->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <!--[if IE]>
-    <style>
-        .login-box-body{
-            border: 1px solid #ddd;
-        }
-    </style>
-    <![endif]-->
-    <style>
-        .login-page{
-            background: #fff;
-        }
-        .logo-login{
-            text-align: center;
-        }
-        .login-box-msg{
-            text-align: center;
-            margin-top:10px;
-            font-weight: bold;
-        }
-        .login-box-body{
-            border-bottom-left-radius: 5px;
-            border-bottom-right-radius: 5px;
-            box-shadow: 0 1px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
-        }
-        .login-logo{
-            /*margin-top: 50px;*/
-            background: #2CADAD;
-            margin-bottom: 0;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-            box-shadow: 0 1px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)!important;
-        }
-        .login-box{
-            padding-top:50px;
-        }
-        .btn-login{
-            background: #2CADAD;
-            color: #fff;
-        }
-        .btn-login:hover{
-            background: #2CADAD;
-            color:#fff;
-        }
-    </style>
+    <title>Well come</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('auth/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('auth/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('auth/fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('auth/vendor/animate/animate.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('auth/vendor/css-hamburgers/hamburgers.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('auth/vendor/animsition/css/animsition.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('auth/vendor/select2/select2.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('auth/vendor/daterangepicker/daterangepicker.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('auth/css/util.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('auth/css/main.css') }}">
+    <!--===============================================================================================-->
 </head>
-<body class="hold-transition login-page">
-{{-- @if(Auth::user())
-    <script>window.location.href='/';</script>
-@endif --}}
-<div class="login-box">
-    <div class="login-logo">
-        <a href="/" style="text-transform: uppercase;font-size: 30px;color:#fff;"><b>Đăng nhập</b></a>
-    </div>
-    <!-- /.login-logo -->
-    <div class="login-box-body">
-        <form action="{{ url('/login') }}" method="post">
-            <div class="form-group has-feedback">
-                <input style="padding-left: 10px;" type="text" name="email" class="form-control" placeholder="Username or Email">
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <input style="padding-left: 10px;" type="password" name="password" class="form-control" placeholder="Password">
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
-            <div class="row">
-            {{--<div class="col-xs-8">--}}
-            {{--<div class="checkbox icheck">--}}
-            {{--<label>--}}
-            {{--<input type="checkbox" name="chk_remmember"> <span>Remember Me</span>--}}
-            {{--</label>--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            <!-- /.col -->
-                <div class="col-xs-12">
-                    <button type="submit" class="btn btn-block btn-flat text-center btn-login">Sign In</button>
-                </div>
-                <div class="text-center">
-                    Bạn chưa có tài khoản? <a style="font-weight: 900;" href="/signup" id="signup_id">Đăng Ký</a>
-                </div>
-                <input type="hidden" name="_token" value="{!! csrf_token() !!}">
-                <!-- /.col -->
-            </div>
-        </form>
-        <p class="text-danger login-box-msg">Vui lòng đăng nhập để tiếp tục!
-        <?php //Hiển thị thông báo thành công?>
-        @if ( Session::has('success') )
-            <div class="alert alert-success alert-dismissible" role="alert">
-                <strong>{{ Session::get('success') }}</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    <span class="sr-only">Close</span>
-                </button>
-            </div>
-        @endif
-        <?php //Hiển thị thông báo lỗi?>
-        @if ( Session::has('error') )
-            <div class="alert alert-danger alert-dismissible" role="alert">
-                <strong>{{ Session::get('error') }}</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    <span class="sr-only">Close</span>
-                </button>
-            </div>
-        @endif
-        @if ($errors->any())
-            <div class="alert alert-danger alert-dismissible" role="alert">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    <span class="sr-only">Close</span>
-                </button>
-            </div>
-        @endif
+<style>
+    .swal2-icon.swal2-success.swal2-icon-show {
+        margin: auto;
+    }
 
-    </div>
-    <!-- /.login-box-body -->
-</div>
-<!-- /.login-box -->
+    .swal2-icon.swal2-error.swal2-icon-show {
+        margin: auto;
+    }
+</style>
 
-<!-- jQuery 3 -->
-<script src="{{ asset('default/bower_components/jquery/dist/jquery.min.js')}}"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="{{ asset('default/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-<!-- iCheck -->
-<script src="{{ asset('default/plugins/iCheck/icheck.min.js')}}"></script>
-<script src="{{ asset('default/dist/js/spx.js')}}?v=1"></script>
-<script>
-    $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' /* optional */
-        });
-    });
-</script>
+@include('_alert')
+@if (session()->has('success'))
+    <div class="alert alert-success text-center">{{ session()->get('success') }}</div>
+@endif
+@if (session()->has('error'))
+    <div class="alert alert-danger text-center">{{ session()->get('error') }}</div>
+@endif
+
+<body style="background-color: #666666;">
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form method="post" action="{{ route('auth.handleLogin') }}" class="login100-form validate-form"
+                    enctype="multipart/form-data" id="">
+                    @csrf
+                    <span class="login100-form-title p-b-43">
+                        WELLCOME
+                    </span>
+
+
+                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="email">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Email</span>
+                    </div>
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" name="password">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Password</span>
+                    </div>
+
+                    <div class="flex-sb-m w-full p-t-3 p-b-32">
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                            <label class="label-checkbox100" for="ckb1">
+                                Remember me
+                            </label>
+                        </div>
+
+                        <div>
+                            <a href="#" class="txt1">
+                                Forgot Password?
+                            </a>
+                        </div>
+                        <div>
+                            <a href="{{route('auth.singup')}}" class="txt1">
+                                Signup !
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="container-login100-form-btn">
+                        <button type="submit" class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+
+                    <div class="text-center p-t-46 p-b-20">
+                        <span class="txt2">
+                            or sign up using
+                        </span>
+                    </div>
+
+                    <div class="login100-form-social flex-c-m">
+                        <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
+                            <i class="fa fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+
+                        <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </form>
+
+                <div class="login100-more" style="background-image: url('{{ asset('auth/images/bg-01.jpg') }}');">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!--===============================================================================================-->
+    <script src="{{ asset('auth/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('auth/vendor/animsition/js/animsition.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('auth/vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ asset('auth/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('auth/vendor/select2/select2.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('auth/vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('auth/vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('auth/vendor/countdowntime/countdowntime.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('auth/js/main.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
+
 </html>

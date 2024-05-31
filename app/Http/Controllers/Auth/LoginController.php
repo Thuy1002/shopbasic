@@ -9,105 +9,80 @@ use App\Models\User;
 use Illuminate\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
-    public function getLogin()
+    public function index()
     {
         // Mail::to("thuy1002dangthanh@gmail.com")->send(new OrderShipped(['ma'=>'1232311']));
-        return view('auth.login');
+        return view('Auth.login');
     }
-    public function postLogin(Request $request)
+    public function handleLogin(Request $request)
     {
-        //  dd($request -> all())
-        $rules = [  //kiểm tra dữ liệu đầu vào
-            'email' => 'required | email',
-            'password' => 'required'
-        ];
-        $messages = [
-            'email.required' => 'Chưa nhập Email',
-            'email.email' => 'Vui lòng nhập đúng Email',
-            'password.required' => 'Chưa nhập password'
-        ];
-        $validator = Validator::make($request->all(), $rules, $messages);
-        // dd($validator);
-        if ($validator->fails()) {
-            return redirect('login')->withErrors($validator)->withInput();
+        if (
+            Auth::guard('web')->attempt([
+                'email' => $request->email,
+                'password' => $request->password,
+                'role' => 'user'
+            ])
+        ) {
+            if (Session::get('backUrl')) {
+                $url = Session::get('backUrl');
+                Session::forget('backUrl');
+                return redirect($url)->with('success', 'bạn đăng nhập thành công');
+            }
+            return redirect()->route('client')->with('success', 'bạn đăng nhập thành công');
+        } elseif (Auth::guard('web')->attempt([
+            'email' => $request->email,
+            'password' => $request->password,
+            'role' => 'admin'
+        ])) {
+            return redirect()->route('admin.dashboard')->with('success', 'Đăng nhập thành công');
         } else {
-            $email  = $request->input('email'); //đón dữ liệu từ bên trang login gửi sang
-
-            $password = $request->input('password');
-            //Auth::attempt(): Đây là phương thức check input data có hợp lệ không,
-            // nếu hợp lệ sẽ trả về true và ngược lại. 
-            if (Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'admin'])) {
-                return redirect()->route('route_BackEnd_Uesr_Index');
-            }
-            if (Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'user'])) {
-                return redirect('/');
-            } else {
-                Session::flash('error', 'Email hoặc mật khẩu không đúng');
-                return redirect('login')->withErrors($validator)->withInput();
-            }
+            //  dd(auth()->user());
+            return redirect()->route('auth.login')->with('failed', 'đăng nhập thất bại');
+            // return redirect('login')->with('failed', 'đăng nhập thất bại !');
         }
     }
 
-
-    public function getlogout()
+    public function logout()
     {
         Auth::logout();
         return redirect('login');
     }
 
-
-    public function getSignup()
+    public function singup(Request $request)
     {
-        return view('auth.signup');
-    }
-    public function postSignup(Request $request)
-    {
-        // if ($request->isMethod('post')) {
-        //     $validator = Validator::make($request->all(), [
-        //         'name' => 'required',
-        //         'email' => 'required|email',
-        //         'password' => 'required',
-        //     ]);
-        $rules = [  //kiểm tra dữ liệu đầu vào
-            'name' => 'required',
-            'email' => 'required | email',
-            'password' => 'required'
-        ];
-        $messages = [
-            'name.required' => 'Chưa nhập họ tên',
-            'email.required' => 'Chưa nhập Email',
-            'email.email' => 'Vui lòng nhập đúng Email',
-            'password.required' => 'Chưa nhập password'
-        ];
-        $validator = Validator::make($request->all(), $rules, $messages);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+        if ($request->isMethod('post')) {
+            if ($request->post('re_password') != $request->post('password')) {
+                return redirect()->route('auth.register')->with('failed', 'Mật khẩu không khớp');
+            } else {
+                //  $password = $request->password;
+                $user = User::create(
+                    array_merge(
+                        $request->all(),
+                        [
+                            'avatar' => 'images/avatar_icon.png',
+                            'password' => Hash::make(123456),
+                            'email_verified_at' => now(),
+                            'created_at' => date('Y-m-d H:i:s'),
+                            'updated_at' => date('Y-m-d H:i:s'),
+                        ],
+                    )
+                );
+                //   dd( $user);
+                // $db = User::where('email', 'like', $request->email)->first();
+                // Mail::send('screens.email.user.actived-user', compact('db', 'password'), function ($email) use ($db) {
+                //     $email->subject('Đăng ký tài khoản Eduport');
+                //     $email->to($db->email, $db->name);
+                // });
+                return redirect()->route('auth.login')->with('success', 'Tạo tài khoản thành công');
+            }
         }
-        $params = [];
-        $params['cols'] = array_map(
-            function ($item) {
-                if ($item == '')
-                    $item = null;
-
-                if (is_string($item))
-                    $item = trim($item); //bỏ khoảng chống
-
-                return $item;
-            },
-            $request->post()
-        );
-        unset($params['cols']['_token']);
-        $model = new User();
-        $res = $model->taoTK($params);
-        if ($res > 0) {
-            Session::flash('success', 'Đăng ký thành công');
-            return redirect('login');
-        }
+        return view('auth.register');
     }
 }

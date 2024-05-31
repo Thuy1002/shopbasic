@@ -2,7 +2,7 @@
     <!--begin::Menu Nav-->
     <ul class="menu-nav">
         <li class="menu-item" aria-haspopup="true">
-            <a href="{{ route('admin.home') }}" class="menu-link">
+            <a href="" class="menu-link">
                 <span class="svg-icon menu-icon">
                     <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg-->
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -29,7 +29,7 @@
         </li>
 
         <li class="menu-item" aria-haspopup="true">
-            <a  href="{{ route('admin.home') }}" class="menu-link">
+            <a  href="" class="menu-link">
                 <span class="svg-icon menu-icon">
                     <!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -83,7 +83,7 @@
                         </span>
                     </li>
                     <li class="menu-item" aria-haspopup="true">
-                        <a href="{{ route('admin.statistics.user') }}" class="menu-link">
+                        <a href="" class="menu-link">
                             <i class="menu-bullet menu-bullet-dot">
                                 <span></span>
                             </i>
@@ -91,7 +91,7 @@
                         </a>
                     </li>
                     <li class="menu-item" aria-haspopup="true">
-                        <a href="{{ route('admin.statistics.rooms') }}" class="menu-link">
+                        <a href="" class="menu-link">
                             <i class="menu-bullet menu-bullet-dot">
                                 <span></span>
                             </i>
@@ -107,7 +107,7 @@
                         </a>
                     </li>
                     <li class="menu-item" aria-haspopup="true">
-                        <a href="{{ route('admin.statistics.income') }}" class="menu-link">
+                        <a href="" class="menu-link">
                             <i class="menu-bullet menu-bullet-dot">
                                 <span></span>
                             </i>
@@ -118,7 +118,7 @@
             </div>
         </li>
         <li class="menu-item" aria-haspopup="true">
-            <a target="" href="{{ route('admin.types.list') }}" class="menu-link">
+            <a target="" href="" class="menu-link">
                 <span
                     class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Files\Group-folders.svg--><svg
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -137,7 +137,7 @@
             </a>
         </li>
         <li class="menu-item" aria-haspopup="true">
-            <a target="" href="{{ route('admin.rooms.list') }}" class="menu-link">
+            <a target="" href="" class="menu-link">
                 <span
                     class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Home\Door-open.svg--><svg
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -155,7 +155,7 @@
             </a>
         </li>
         <li class="menu-item" aria-haspopup="true">
-            <a target="" href="{{ route('admin.categori.list') }}" class="menu-link">
+            <a target="" href="" class="menu-link">
                 <span
                     class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo1\dist/../src/media/svg/icons\Devices\Server.svg--><svg
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -177,7 +177,7 @@
             </a>
         </li>
         <li class="menu-item" aria-haspopup="true">
-            <a target="" href="{{ route('admin.service.list') }}" class="menu-link">
+            <a target="" href="" class="menu-link">
                 <span
                     class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Home/Towel.svg--><svg
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -193,7 +193,7 @@
             </a>
         </li>
         <li class="menu-item" aria-haspopup="true">
-            <a target="" href="{{ route('admin.discount.list') }}" class="menu-link">
+            <a target="" href="" class="menu-link">
                 <span
                     class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Shopping/Ticket.svg--><svg
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
@@ -210,7 +210,7 @@
             </a>
         </li>
         <li class="menu-item" aria-haspopup="true">
-            <a target="" href="{{ route('admin.posts.list') }}" class="menu-link">
+            <a target="" href="" class="menu-link">
                 <span
                     class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2021-05-14-112058/theme/html/demo1/dist/../src/media/svg/icons/Files/Pictures1.svg--><svg
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
