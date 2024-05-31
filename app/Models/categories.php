@@ -12,7 +12,7 @@ class categories extends Model
 {
   use HasFactory;
   protected  $table = 'categories';
-  protected $fillable = ['id', 'title'];
+  protected $fillable = ['id', 'title','status','description'];
   public function listdanhmuc($params = []) //show theo phân trang
   {
     $query = DB::table($this->table)->select($this->fillable)->where('status', 1);

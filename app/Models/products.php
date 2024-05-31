@@ -13,19 +13,23 @@ class products extends Model
 {
   use HasFactory;
   protected $table = "products";
-  protected $fillable = ['id', 'price', 'image', 'product', 'quantity', 'describe', 'categories_id', 'discount_product'];
+  protected $fillable = ['id', 'title','price', 'img', 'quantity', 'describe','description_img', 'categories_id', 'discount_product','status'];
 
 
   protected $appends = [
     'current_price'
   ];
+  public function cartItems()
+  {
+    return $this->hasMany(CartItem::class);
+  }
   public function listsp($params = [])
   {
     $query = DB::table($this->table)->select($this->fillable)->where('status', 1)->orWhere('status', 0);
     $list = $query->paginate(5);
     return $list;
   }
-  
+
   public function categories()
   {
     return $this->belongsTo(Categories::class);
@@ -39,10 +43,6 @@ class products extends Model
   public function cart()
   {
     return $this->belongsTo(Cart::class);
-  }
-  public function order()
-  {
-    return $this->belongsTo(Order::class);
   }
   public function listsp_2($params = [])
   {
@@ -95,9 +95,9 @@ class products extends Model
     return $res;
   }
 
-  public function FunctionName(Request $request)
-  {
-    $rss = DB::table($this->table)->where('title', 'like', '%' . $request->key . '%')->get();
-    return $rss;
-  }
+  // public function FunctionName(Request $request)
+  // {
+  //   $rss = DB::table($this->table)->where('title', 'like', '%' . $request->key . '%')->get();
+  //   return $rss;
+  // }
 }

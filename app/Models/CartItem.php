@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class CartItem extends Model
 {
     use HasFactory;
-    protected $table = 'cartitem';
-    protected $fillable = ['id','id+product','price','id_cart','quanity'];
+    protected $table = 'cart_item';
+    protected $fillable = ['id','cart_id','quantity','product_id'];
 
     public function cart()
     {
-        return $this->belongsTo(Cart::class);
+        return $this->belongsTo(Cart::class,'cart_id');
     }
 
     public function product()
     {
-        return $this->belongsTo(products::class);
+        return $this->belongsTo(products::class,'product_id');
     }
 }

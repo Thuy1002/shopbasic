@@ -20,10 +20,11 @@ return new class extends Migration
             $table->integer('discount_price')->nullable();
             $table->integer('categories_id');
             $table->string('img')->nullable();
-            $table->integer('quantity');
+            $table->string('description_img')->nullable();
+            $table->integer('quantity')->nullable();
             $table->string('describe')->nullable();
-            $table->integer('status')->default('1');
-            $table->timestamps();
+            $table->string('status')->default('available'); //có sẵn
+            $table->timestamps(); 
         });
     }
 

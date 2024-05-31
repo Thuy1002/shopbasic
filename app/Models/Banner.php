@@ -11,7 +11,7 @@ class Banner extends Model
 {
     use HasFactory;
     protected  $table = 'banner';
-    protected $fillable = ['id', 'title','img'];
+    protected $fillable = ['id', 'title','img','status'];
     public function listBanner($params = []) //show theo phân trang
     {
       $query = DB::table($this->table)->select($this->fillable)->where('status', 1);

@@ -20,7 +20,8 @@ return new class extends Migration
             $table->integer('number_phone')->nullable();
             $table->string('address')->nullable();
             $table->string('img')->nullable();
-            $table->integer('status')->default('1');
+            $table->string('role')->default('user');
+            $table->string('status')->default('1');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->integer('status')->default('1');
+            $table->string('img')->nullable();
+            $table->string('status')->default('available'); // có sẵn
+            $table->string('description')->nullable(); 
             $table->timestamps();
         });
     }
