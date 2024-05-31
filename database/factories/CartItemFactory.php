@@ -19,7 +19,7 @@ class CartItemFactory extends Factory
     {
         return [
             //
-            'cart_id' =>Arr::random([1, 2, 3, 4, 5, 6, 7, 8, 9]),
+            'cart_id' => fake()->text(5),
             'product_id' => Arr::random([1, 2, 3, 4, 5, 6, 7, 8, 9]),
             'quantity' => Arr::random([1, 2, 3, 4, 5, 6, 7, 8]),
         ];
